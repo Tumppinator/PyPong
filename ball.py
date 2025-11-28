@@ -13,8 +13,6 @@ class Ball(Turtle):
         self.dy = 0.8
         self.move_speed = 2
 
-
-
     def move(self):
         new_x = self.xcor() + self.dx * self.move_speed
         new_y = self.ycor() + self.dy * self.move_speed
@@ -27,6 +25,13 @@ class Ball(Turtle):
         elif self.ycor() < -290:
             self.sety(-290)
             self.dy *= -1
+
+    def check_out_of_bounds(self):
+        if self.xcor() > 395:
+            return "right"
+        elif self.xcor() < -395:
+            return "left"
+        return None
 
 
     def check_paddle_collision(self, paddle_a, paddle_b):
